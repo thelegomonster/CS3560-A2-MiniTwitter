@@ -87,6 +87,26 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JTree tree = new JTree();
+		tree.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("MiniTwitter") {
+				{
+					DefaultMutableTreeNode node_1;
+					add(new DefaultMutableTreeNode("Andrew"));
+					add(new DefaultMutableTreeNode("Blue"));
+					node_1 = new DefaultMutableTreeNode("Dog Lovers");
+						node_1.add(new DefaultMutableTreeNode("Phil"));
+						node_1.add(new DefaultMutableTreeNode("Bob"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Food");
+						node_1.add(new DefaultMutableTreeNode("Spaghetti"));
+						node_1.add(new DefaultMutableTreeNode("Cilantro"));
+						node_1.add(new DefaultMutableTreeNode("Ravioli"));
+					add(node_1);
+					add(new DefaultMutableTreeNode("Harrison"));
+					add(new DefaultMutableTreeNode("Kyle"));
+				}
+			}
+		));
 		tree.setBounds(10, 11, 147, 262);
 		getContentPane().add(tree);
 		
