@@ -30,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 /**************************************************************************************************************************************************
  * Java-based Mini Twitter with GUI using Java Swing. Pure desktop program, without web or mobile components. 
@@ -90,20 +91,7 @@ public class AdminControlPanel extends JFrame {
 		tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("MiniTwitter") {
 				{
-					DefaultMutableTreeNode node_1;
-					add(new DefaultMutableTreeNode("Andrew"));
-					add(new DefaultMutableTreeNode("Blue"));
-					node_1 = new DefaultMutableTreeNode("Dog Lovers");
-						node_1.add(new DefaultMutableTreeNode("Phil"));
-						node_1.add(new DefaultMutableTreeNode("Bob"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Food");
-						node_1.add(new DefaultMutableTreeNode("Spaghetti"));
-						node_1.add(new DefaultMutableTreeNode("Cilantro"));
-						node_1.add(new DefaultMutableTreeNode("Ravioli"));
-					add(node_1);
-					add(new DefaultMutableTreeNode("Harrison"));
-					add(new DefaultMutableTreeNode("Kyle"));
+					
 				}
 			}
 		));
@@ -111,17 +99,25 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().add(tree);
 		
 		JTextArea txtAreaUserID = new JTextArea();
-		txtAreaUserID.setText("User ID");
-		txtAreaUserID.setBounds(167, 11, 160, 22);
+		txtAreaUserID.setBounds(224, 11, 103, 22);
 		getContentPane().add(txtAreaUserID);
 		
 		JButton btnAddUser = new JButton("Add User");
+		//Add User to jTree at selected Node
+		btnAddUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(txtAreaUserID.getText());
+				selected.add(newNode);
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				model.reload();
+			}
+		});
 		btnAddUser.setBounds(337, 12, 160, 23);
 		getContentPane().add(btnAddUser);
 		
 		JTextArea txtAreaGroupID = new JTextArea();
-		txtAreaGroupID.setText("Group ID");
-		txtAreaGroupID.setBounds(167, 44, 160, 22);
+		txtAreaGroupID.setBounds(224, 44, 103, 22);
 		getContentPane().add(txtAreaGroupID);
 		
 		JButton btnAddGroup = new JButton("Add Group");
@@ -160,5 +156,13 @@ public class AdminControlPanel extends JFrame {
 		JButton btnShowPositivePercentage = new JButton("Show Positive Percentage");
 		btnShowPositivePercentage.setBounds(337, 248, 160, 25);
 		getContentPane().add(btnShowPositivePercentage);
+		
+		JLabel lblUserId = new JLabel("User ID: ");
+		lblUserId.setBounds(167, 11, 47, 22);
+		getContentPane().add(lblUserId);
+		
+		JLabel lblGroupId = new JLabel("Group ID:");
+		lblGroupId.setBounds(167, 44, 47, 22);
+		getContentPane().add(lblGroupId);
 	}
 }
