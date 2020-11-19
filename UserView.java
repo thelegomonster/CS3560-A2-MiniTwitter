@@ -13,6 +13,8 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserView extends JFrame {
 
@@ -47,12 +49,18 @@ public class UserView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txtrUserId = new JTextArea();
-		txtrUserId.setText("User ID");
-		txtrUserId.setBounds(10, 11, 100, 22);
-		contentPane.add(txtrUserId);
+		JTextArea txtrUserID = new JTextArea();
+		txtrUserID.setBounds(10, 11, 100, 22);
+		contentPane.add(txtrUserID);
 		
 		JButton btnFollowUser = new JButton("Follow User");
+		//Follow User
+		//take ID from txtUserID
+		btnFollowUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnFollowUser.setBounds(120, 12, 89, 23);
 		contentPane.add(btnFollowUser);
 		
@@ -61,16 +69,22 @@ public class UserView extends JFrame {
 		list_Following.setBounds(10, 44, 199, 86);
 		contentPane.add(list_Following);
 		
-		JTextArea txtrTweetMessage = new JTextArea();
-		txtrTweetMessage.setText("Tweet Message");
-		txtrTweetMessage.setBounds(10, 154, 199, 66);
-		contentPane.add(txtrTweetMessage);
+		JTextArea txtTweetMessage = new JTextArea();
+		txtTweetMessage.setBounds(10, 154, 199, 66);
+		contentPane.add(txtTweetMessage);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 141, 199, 2);
 		contentPane.add(separator);
 		
 		JButton btnPostTweet = new JButton("Post Tweet");
+		//Post Tweet
+		//Take from txtTweetMessage
+		btnPostTweet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnPostTweet.setBounds(10, 231, 199, 23);
 		contentPane.add(btnPostTweet);
 		

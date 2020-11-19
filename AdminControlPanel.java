@@ -103,7 +103,8 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().add(txtAreaUserID);
 		
 		JButton btnAddUser = new JButton("Add User");
-		//Add User to jTree at selected Node
+		//Add User to jTree at selected Node, currently not full proof 
+		//Need checking... if user, don't add? if group, can add
 		btnAddUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
@@ -121,10 +122,29 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().add(txtAreaGroupID);
 		
 		JButton btnAddGroup = new JButton("Add Group");
+		//Add Group to JTree at selected Node, currently functions same as add user unfortunately
+		//Need checking... if user, don't add? if group, can add
+		btnAddGroup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(txtAreaGroupID.getText());
+				selected.add(newNode);
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				model.reload();
+			}
+		});
 		btnAddGroup.setBounds(337, 45, 160, 23);
 		getContentPane().add(btnAddGroup);
 		
 		JButton btnOpenUserView = new JButton("Open User View");
+		//Open User View
+		//Bugged at the moment in that if you close user view it closes everything?
+		btnOpenUserView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UserView newUserView = new UserView();
+				newUserView.setVisible(true);
+			}
+		});
 		btnOpenUserView.setBounds(167, 77, 330, 23);
 		getContentPane().add(btnOpenUserView);
 		
@@ -138,22 +158,42 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().add(txtrConsole);
 		
 		JButton btnShowUserTotal = new JButton("Show User Total");
+		//Show User Total
+		btnShowUserTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnShowUserTotal.setBounds(167, 212, 160, 25);
 		getContentPane().add(btnShowUserTotal);
 		
 		JButton btnShowGroupTotal = new JButton("Show Group Total");
+		//SHow Group Total
+		btnShowGroupTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnShowGroupTotal.setBounds(337, 212, 160, 25);
 		getContentPane().add(btnShowGroupTotal);
 		
 		JButton btnShowMessagesTotal = new JButton("Show Messages Total");
+		//Show total messages
 		btnShowMessagesTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		btnShowMessagesTotal.setBounds(167, 248, 160, 25);
 		getContentPane().add(btnShowMessagesTotal);
 		
 		JButton btnShowPositivePercentage = new JButton("Show Positive Percentage");
+		//Show positive message percentage
+		btnShowPositivePercentage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnShowPositivePercentage.setBounds(337, 248, 160, 25);
 		getContentPane().add(btnShowPositivePercentage);
 		
