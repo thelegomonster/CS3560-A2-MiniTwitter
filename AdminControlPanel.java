@@ -102,13 +102,27 @@ public class AdminControlPanel extends JFrame {
 		txtAreaUserID.setBounds(224, 11, 103, 22);
 		getContentPane().add(txtAreaUserID);
 		
+		JTextArea txtrConsole = new JTextArea();
+		txtrConsole.setLineWrap(true);
+		txtrConsole.setBackground(Color.DARK_GRAY);
+		txtrConsole.setForeground(Color.WHITE);
+		txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		txtrConsole.setText("Console...");
+		txtrConsole.setEditable(false);
+		txtrConsole.setBounds(167, 111, 330, 90);
+		getContentPane().add(txtrConsole);
+		
 		JButton btnAddUser = new JButton("Add User");
-		//Add User to jTree at selected Node, currently not full proof 
-		//Need checking... if user, don't add? if group, can add
+		//Add User to jTree at selected Node
+		//Does not allow adding to users
 		btnAddUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				if(!selected.getAllowsChildren()) {
+					txtrConsole.setText("Cannot Add to User, only to UserGroups or to Root 'MiniTwitter'...");
+				}
 				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(txtAreaUserID.getText());
+				newNode.setAllowsChildren(false);
 				selected.add(newNode);
 				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
 				model.reload();
@@ -122,11 +136,14 @@ public class AdminControlPanel extends JFrame {
 		getContentPane().add(txtAreaGroupID);
 		
 		JButton btnAddGroup = new JButton("Add Group");
-		//Add Group to JTree at selected Node, currently functions same as add user unfortunately
-		//Need checking... if user, don't add? if group, can add
+		//Add Group to JTree at selected Node
+		//Does not allow adding to users
 		btnAddGroup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+				if(!selected.getAllowsChildren()) {
+					txtrConsole.setText("Cannot Add to User, only to UserGroups...");
+				}
 				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(txtAreaGroupID.getText());
 				selected.add(newNode);
 				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
@@ -147,15 +164,6 @@ public class AdminControlPanel extends JFrame {
 		});
 		btnOpenUserView.setBounds(167, 77, 330, 23);
 		getContentPane().add(btnOpenUserView);
-		
-		JTextArea txtrConsole = new JTextArea();
-		txtrConsole.setBackground(Color.DARK_GRAY);
-		txtrConsole.setForeground(Color.WHITE);
-		txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		txtrConsole.setText("Console...");
-		txtrConsole.setEditable(false);
-		txtrConsole.setBounds(167, 111, 330, 90);
-		getContentPane().add(txtrConsole);
 		
 		JButton btnShowUserTotal = new JButton("Show User Total");
 		//Show User Total

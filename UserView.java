@@ -40,17 +40,16 @@ public class UserView extends JFrame {
 	 * Create the frame.
 	 */
 	public UserView() {
-		setResizable(false);
 		setTitle("User View");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 418, 293);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 469, 305);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTextArea txtrUserID = new JTextArea();
-		txtrUserID.setBounds(10, 11, 100, 22);
+		txtrUserID.setBounds(31, 11, 122, 22);
 		contentPane.add(txtrUserID);
 		
 		JButton btnFollowUser = new JButton("Follow User");
@@ -61,20 +60,20 @@ public class UserView extends JFrame {
 				
 			}
 		});
-		btnFollowUser.setBounds(120, 12, 89, 23);
+		btnFollowUser.setBounds(163, 12, 89, 23);
 		contentPane.add(btnFollowUser);
 		
 		JList list_Following = new JList();
 		list_Following.setToolTipText("Following");
-		list_Following.setBounds(10, 44, 199, 86);
+		list_Following.setBounds(10, 44, 242, 86);
 		contentPane.add(list_Following);
 		
 		JTextArea txtTweetMessage = new JTextArea();
-		txtTweetMessage.setBounds(10, 154, 199, 66);
+		txtTweetMessage.setBounds(10, 154, 242, 66);
 		contentPane.add(txtTweetMessage);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 141, 199, 2);
+		separator.setBounds(10, 141, 242, 2);
 		contentPane.add(separator);
 		
 		JButton btnPostTweet = new JButton("Post Tweet");
@@ -85,22 +84,26 @@ public class UserView extends JFrame {
 				
 			}
 		});
-		btnPostTweet.setBounds(10, 231, 199, 23);
+		btnPostTweet.setBounds(73, 231, 105, 23);
 		contentPane.add(btnPostTweet);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1.setBounds(219, 11, 1, 242);
+		separator_1.setBounds(262, 12, 1, 242);
 		contentPane.add(separator_1);
 		
 		JList list_NewsFeed = new JList();
-		list_NewsFeed.setBounds(230, 43, 170, 210);
+		list_NewsFeed.setBounds(273, 44, 170, 210);
 		contentPane.add(list_NewsFeed);
 		
 		JLabel lblNewsFeed = new JLabel("News Feed");
 		lblNewsFeed.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewsFeed.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewsFeed.setBounds(230, 16, 170, 14);
+		lblNewsFeed.setBounds(273, 15, 170, 14);
 		contentPane.add(lblNewsFeed);
+		
+		JLabel lblId = new JLabel("ID:");
+		lblId.setBounds(11, 16, 31, 14);
+		contentPane.add(lblId);
 	}
 }

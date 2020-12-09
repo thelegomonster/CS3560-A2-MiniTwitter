@@ -14,13 +14,23 @@ public class User implements Int_UserElement {
 	void setID(String newID) {
 		this.ID = newID;
 	}
+	//returns the contents of the User's followers as a String
+	String getFollowers() {
+		String output = "";
+		for(int i = 0; i < followers.size(); i++) {
+			output += this.followers.get(i) + " ";
+		}
+		
+		return output;
+	}
 	
 	@Override
 	public void accept(Int_Visitor visitor) {
 		visitor.visit(this);
 	}
 	
-	void follow(User followUser) {
-		
+	void follow(String userID) {
+		this.following.add(userID);
 	}
+	
 }
