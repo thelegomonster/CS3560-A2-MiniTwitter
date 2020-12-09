@@ -7,6 +7,13 @@ public class User implements Int_UserElement {
 	private Vector<String> followers = new Vector<String>(0);		//vector of IDs, lists the user's followers' IDs
 	private Vector<String> following = new Vector<String>(0);		//vector of IDs, lists the IDs of the individuals the user is following
 	private Vector<String> feed = new Vector<String>(0);			//vector that will hold the Tweets and act as the user's "newsfeed"
+	private long creationTime;										//Time at which User was created
+	private long updateTime;										//TIme at which User was last updated
+	
+	public User() {
+		this.creationTime = System.currentTimeMillis();
+		this.updateTime = creationTime;
+	}
 	
 	String getID() {
 		return this.ID;

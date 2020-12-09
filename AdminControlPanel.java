@@ -84,7 +84,7 @@ public class AdminControlPanel extends JFrame {
 		setResizable(false);
 		setTitle("Admin Control Panel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 520, 312);
+		setBounds(100, 100, 511, 351);
 		getContentPane().setLayout(null);
 		
 		JTree tree = new JTree();
@@ -95,11 +95,11 @@ public class AdminControlPanel extends JFrame {
 				}
 			}
 		));
-		tree.setBounds(10, 11, 147, 262);
+		tree.setBounds(10, 11, 147, 296);
 		getContentPane().add(tree);
 		
 		JTextArea txtAreaUserID = new JTextArea();
-		txtAreaUserID.setBounds(224, 11, 103, 22);
+		txtAreaUserID.setBounds(224, 11, 133, 22);
 		getContentPane().add(txtAreaUserID);
 		
 		JTextArea txtrConsole = new JTextArea();
@@ -128,11 +128,11 @@ public class AdminControlPanel extends JFrame {
 				model.reload();
 			}
 		});
-		btnAddUser.setBounds(337, 12, 160, 23);
+		btnAddUser.setBounds(367, 12, 130, 23);
 		getContentPane().add(btnAddUser);
 		
 		JTextArea txtAreaGroupID = new JTextArea();
-		txtAreaGroupID.setBounds(224, 44, 103, 22);
+		txtAreaGroupID.setBounds(224, 44, 133, 22);
 		getContentPane().add(txtAreaGroupID);
 		
 		JButton btnAddGroup = new JButton("Add Group");
@@ -150,7 +150,7 @@ public class AdminControlPanel extends JFrame {
 				model.reload();
 			}
 		});
-		btnAddGroup.setBounds(337, 45, 160, 23);
+		btnAddGroup.setBounds(367, 45, 130, 23);
 		getContentPane().add(btnAddGroup);
 		
 		JButton btnOpenUserView = new JButton("Open User View");
@@ -212,5 +212,19 @@ public class AdminControlPanel extends JFrame {
 		JLabel lblGroupId = new JLabel("Group ID:");
 		lblGroupId.setBounds(167, 44, 47, 22);
 		getContentPane().add(lblGroupId);
+		
+		JButton btnVerifyIds = new JButton("Verify IDs");
+		//Verify no duplicate IDs are present in Tree
+		btnVerifyIds.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnVerifyIds.setBounds(167, 284, 160, 23);
+		getContentPane().add(btnVerifyIds);
+		
+		JButton btnFindLastUpdated = new JButton("Find Last Updated User");
+		btnFindLastUpdated.setBounds(336, 284, 158, 23);
+		getContentPane().add(btnFindLastUpdated);
 	}
 }
